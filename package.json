@@ -1,7 +1,9 @@
 {
   "name": "etacar-test-task",
   "version": "1.0.0",
-  "scripts": {
-    
+  "scripts": {},
+  "devDependencies": {
+    "@types/node": "^20.8.5",
+    "typescript": "^5.2.2"
   }
 }
