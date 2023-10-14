@@ -10,18 +10,16 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "~/*": [
-        "src/*"
+      "@monorepo/*": [
+        "./packages/*/src/index.ts"
       ]
     },
     "outDir": "./dist",
     "strict": true,
     "strictNullChecks": true
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
