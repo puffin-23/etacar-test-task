@@ -1,6 +1,9 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.ts",
-  "scripts": {}
+  "main": "src/index.ts",
+  "scripts": {},
+  "dependencies": {
+    "@trpc/server": "^10.40.0"
+  }
 }
