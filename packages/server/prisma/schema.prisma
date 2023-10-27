@@ -12,25 +12,25 @@ datasource db {
 
 model Unit {
   id Int @id @default(autoincrement())
-  // head Employee @relation(fields: [headId], references: [id])
+  head Employee @relation("Head", fields: [headId], references: [id])
   headId Int @unique
   name String
   createdAt DateTime @default(now())
   description String
-  staff Employee[]
+  staff Employee[] @relation("Unit")
 }
 
 model Employee {
   id Int @id @default(autoincrement())
   name String
   lastname String
-  // head Unit?
-  unit Unit @relation(fields: [unitId], references: [id])
-  unitId Int
+  head Unit? @relation("Head")
+  unit Unit @relation("Unit", fields: [unitId], references: [id])
+  unitId Int @unique
   title JodTitle @relation(fields: [titleId], references: [id])
-  titleId Int
+  titleId Int 
   company Company @relation(fields: [companyId], references: [id])
-  companyId Int
+  companyId Int 
   createdAt DateTime @default(now())
 }
 
