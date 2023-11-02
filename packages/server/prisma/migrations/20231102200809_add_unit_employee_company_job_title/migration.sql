@@ -10,7 +10,7 @@ DROP TABLE "User";
 -- CreateTable
 CREATE TABLE "Unit" (
     "id" SERIAL NOT NULL,
-    "headId" INTEGER NOT NULL,
+    "headId" INTEGER,
     "name" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "description" TEXT NOT NULL,
@@ -54,7 +54,7 @@ CREATE UNIQUE INDEX "Unit_headId_key" ON "Unit"("headId");
 CREATE UNIQUE INDEX "Employee_unitId_key" ON "Employee"("unitId");
 
 -- AddForeignKey
-ALTER TABLE "Unit" ADD CONSTRAINT "Unit_headId_fkey" FOREIGN KEY ("headId") REFERENCES "Employee"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Unit" ADD CONSTRAINT "Unit_headId_fkey" FOREIGN KEY ("headId") REFERENCES "Employee"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Employee" ADD CONSTRAINT "Employee_unitId_fkey" FOREIGN KEY ("unitId") REFERENCES "Unit"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

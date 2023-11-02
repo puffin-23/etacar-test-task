@@ -12,8 +12,8 @@ datasource db {
 
 model Unit {
   id Int @id @default(autoincrement())
-  head Employee @relation("Head", fields: [headId], references: [id])
-  headId Int @unique
+  head Employee? @relation("Head", fields: [headId], references: [id])
+  headId Int? @unique
   name String
   createdAt DateTime @default(now())
   description String

@@ -1,6 +1,8 @@
 import { inferAsyncReturnType, initTRPC} from "@trpc/server"
 import { createExpressMiddleware, CreateExpressContextOptions } from '@trpc/server/adapters/express'
 import express from 'express'
+import { JobTitleService } from "./services/JobTitleService"
+import { JodTitle } from '@prisma/client'
 
 const createContext = ({
    req,
@@ -12,6 +14,11 @@ const t = initTRPC.context<Context>().create()
 const appRouter = t.router({
    ping:t.procedure.query(() => {
       return "pong"
+   }),
+   createJobTitle:t.procedure.query(() => {
+      const jobTitleService = new JobTitleService()
+      const jobTitle = jobTitleService.create({name: 'Developer'} as JodTitle)
+      return jobTitle
    })
 })
 
@@ -26,6 +33,7 @@ app.use('/trpc', createExpressMiddleware({
 app.listen(4000, () => {
    console.log('Server started.');
 })
+
 
 
 
