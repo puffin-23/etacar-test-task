@@ -1,12 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "User";
-
 -- CreateTable
 CREATE TABLE "Unit" (
     "id" SERIAL NOT NULL,
@@ -40,11 +31,11 @@ CREATE TABLE "Company" (
 );
 
 -- CreateTable
-CREATE TABLE "JodTitle" (
+CREATE TABLE "JobTitle" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
 
-    CONSTRAINT "JodTitle_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "JobTitle_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -60,7 +51,7 @@ ALTER TABLE "Unit" ADD CONSTRAINT "Unit_headId_fkey" FOREIGN KEY ("headId") REFE
 ALTER TABLE "Employee" ADD CONSTRAINT "Employee_unitId_fkey" FOREIGN KEY ("unitId") REFERENCES "Unit"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Employee" ADD CONSTRAINT "Employee_titleId_fkey" FOREIGN KEY ("titleId") REFERENCES "JodTitle"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Employee" ADD CONSTRAINT "Employee_titleId_fkey" FOREIGN KEY ("titleId") REFERENCES "JobTitle"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Employee" ADD CONSTRAINT "Employee_companyId_fkey" FOREIGN KEY ("companyId") REFERENCES "Company"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

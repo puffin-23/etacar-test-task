@@ -2,7 +2,7 @@ import { inferAsyncReturnType, initTRPC} from "@trpc/server"
 import { createExpressMiddleware, CreateExpressContextOptions } from '@trpc/server/adapters/express'
 import express from 'express'
 import { JobTitleService } from "./services/JobTitleService"
-import { JodTitle } from '@prisma/client'
+import { JobTitle } from '@prisma/client'
 
 const createContext = ({
    req,
@@ -17,7 +17,7 @@ const appRouter = t.router({
    }),
    createJobTitle:t.procedure.query(() => {
       const jobTitleService = new JobTitleService()
-      const jobTitle = jobTitleService.create({name: 'Developer'} as JodTitle)
+      const jobTitle = jobTitleService.create({name: 'Developer'} as JobTitle)
       return jobTitle
    })
 })
