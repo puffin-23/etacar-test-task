@@ -15,7 +15,7 @@ const appRouter = t.router({
    ping:t.procedure.query(() => {
       return "pong"
    }),
-   createJobTitle:t.procedure.query(() => {
+   createJobTitle:t.procedure.mutation(() => {
       const jobTitleService = new JobTitleService()
       const jobTitle = jobTitleService.create({name: 'Developer'} as JobTitle)
       return jobTitle
