@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "Unit" (
-    "id" SERIAL NOT NULL,
-    "headId" INTEGER,
+    "id" TEXT NOT NULL,
+    "headId" TEXT,
     "name" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "description" TEXT NOT NULL,
@@ -11,12 +11,12 @@ CREATE TABLE "Unit" (
 
 -- CreateTable
 CREATE TABLE "Employee" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
-    "unitId" INTEGER NOT NULL,
-    "titleId" INTEGER NOT NULL,
-    "companyId" INTEGER NOT NULL,
+    "unitId" TEXT NOT NULL,
+    "titleId" TEXT NOT NULL,
+    "companyId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Employee_pkey" PRIMARY KEY ("id")
@@ -24,7 +24,7 @@ CREATE TABLE "Employee" (
 
 -- CreateTable
 CREATE TABLE "Company" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
 
     CONSTRAINT "Company_pkey" PRIMARY KEY ("id")
@@ -32,7 +32,7 @@ CREATE TABLE "Company" (
 
 -- CreateTable
 CREATE TABLE "JobTitle" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
 
     CONSTRAINT "JobTitle_pkey" PRIMARY KEY ("id")

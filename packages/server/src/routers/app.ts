@@ -1,14 +1,13 @@
 import { router, procedure } from "../trpc"
 import { JobTitleService } from "../services/JobTitleService"
 import { JobTitle } from "@prisma/client"
+import { employeeRouter } from "./employee"
+import { jobTitleRouter } from "./jobTitle"
 
 export const appRouter = router({
    ping: procedure.query(() => {
       return "pong"
    }),
-   createJobTitle: procedure.mutation(() => {
-      const jobTitleService = new JobTitleService()
-      const jobTitle = jobTitleService.create({name: 'Developer'} as JobTitle)
-      return jobTitle
-   })
+   jobTitle: jobTitleRouter,
+   employee: employeeRouter
 })

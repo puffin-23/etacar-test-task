@@ -11,9 +11,9 @@ datasource db {
 }
 
 model Unit {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   head Employee? @relation("Head", fields: [headId], references: [id])
-  headId Int? @unique
+  headId String? @unique
   name String
   createdAt DateTime @default(now())
   description String
@@ -21,27 +21,27 @@ model Unit {
 }
 
 model Employee {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   name String
   lastname String
   head Unit? @relation("Head")
   unit Unit @relation("Unit", fields: [unitId], references: [id])
-  unitId Int @unique
+  unitId String @unique
   title JobTitle @relation(fields: [titleId], references: [id])
-  titleId Int 
+  titleId String 
   company Company @relation(fields: [companyId], references: [id])
-  companyId Int 
+  companyId String 
   createdAt DateTime @default(now())
 }
 
 model Company {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   name String
   staff Employee[]
 }
 
 model JobTitle {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   name String
   staff Employee[]
 }
